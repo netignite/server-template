@@ -10,20 +10,19 @@ list = ["dep:itertools"]
 [dependencies]
 itertools = { workspace = true, optional = true }
 
-phf = { version = "0.11", features = ["macros"] }
+phf = { workspace = true, features = ["macros"] }
 
 [build-dependencies]
 camino.workspace = true
 
-phf_codegen = "0.11"
-glob = "0.3"
-mime_guess = "2.0.4"
-flate2 = "1.0"
+phf_codegen.workspace = true
+glob.workspace = true
+mime_guess.workspace = true
+flate2.workspace = true
 
 [dev-dependencies]
 lib-web = { path = ".", features = ["list"]}
 
 camino.workspace = true
-
-mime_guess = "2.0.4"
-flate2 = "1.0"
+mime_guess.workspace = true
+flate2.workspace = true
