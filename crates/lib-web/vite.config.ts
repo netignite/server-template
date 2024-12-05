@@ -1,16 +1,18 @@
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueDevTools from 'vite-plugin-vue-devtools'
 import license from 'rollup-plugin-license'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '/web',
-  plugins: [vue()],
+  plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
   build: {
@@ -43,7 +45,7 @@ export default defineConfig({
     legalComments: 'none'
   },
   server: {
-    host: "127.0.0.1",
+    host: '127.0.0.1',
     port: 4000,
     strictPort: true
   }
