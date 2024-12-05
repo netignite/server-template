@@ -16,7 +16,7 @@ static NPM_CMD: &str = "npm";
 static RUSTFMT_CMD: &str = "rustfmt";
 
 fn install_npm_dependencies(path: &Utf8Path) {
-    let root_path = path.join("..").join("..");
+    let root_path = path;
     println!("Installing npm dependencies for libraries/web");
     let npm_exit_status = Command::new(NPM_CMD)
         .args(["install"])
