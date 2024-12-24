@@ -1,21 +1,21 @@
 # Build Web Data
-FROM node:21.4.0-bookworm as web-builder
+FROM node:22.12.0-bookworm AS web-builder
 WORKDIR /build
 COPY . .
-RUN npm install
-RUN npm run build --workspace=crates/lib-web
+RUN cd crates/lib-web && npm install
+RUN cd crates/lib-web && npm run build
 
 # Build Rust Project
-FROM rust:1.74.0-bookworm as rust-builder
+FROM rust:1.83.0-bookworm AS rust-builder
 WORKDIR /build
 COPY . .
 COPY --from=web-builder /build/crates/lib-web/dist /build/crates/lib-web/dist
-ENV SKIP_NPM_BUILD true
-ENV SKIP_RUSTFMT true
+ENV SKIP_NPM_BUILD=true
+ENV SKIP_RUSTFMT=true
 RUN cargo build --release
 
 # Build Rust License List
-FROM rust:1.74.0-bookworm as rust-license
+FROM rust:1.83.0-bookworm AS rust-license
 WORKDIR /build
 COPY . .
 RUN cargo install cargo-about
