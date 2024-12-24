@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  check_if_branch_base:
+  check-branch-base:
     runs-on: ubuntu-latest
     steps:
       - name: Git checkout
