@@ -1,7 +1,7 @@
 name: Lint Javascript
 on: [ pull_request ]
 jobs:
-  build-node:
+  javascript-lint:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -12,12 +12,12 @@ jobs:
         with:
           filters: |
             javascript:
-              - '**/*.js'
-              - '**/*.ts'
-              - '**/*.json'
-              - '**/*.vue'
-              - '**/*.css'
-              - '**/*.scss'
+              - '*.js'
+              - '*.ts'
+              - '*.json'
+              - '*.vue'
+              - '*.css'
+              - '*.scss'
       - name: Use Node.js
         if: steps.filter.outputs.javascript == 'true'
         uses: actions/setup-node@v4

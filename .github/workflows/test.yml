@@ -1,7 +1,7 @@
 name: Test Project
 on: [ pull_request ]
 jobs:
-  build-node:
+  test:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
