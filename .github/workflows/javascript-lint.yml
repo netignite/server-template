@@ -1,7 +1,13 @@
-name: Lint Project
-
-on: [ pull_request ]
-
+name: Lint Javascript
+on:
+  pull_request:
+    paths:
+      - '**/*.js'
+      - '**/*.ts'
+      - '**/*.json'
+      - '**/*.vue'
+      - '**/*.css'
+      - '**/*.scss'
 jobs:
   build-node:
     runs-on: ubuntu-22.04
@@ -17,10 +23,6 @@ jobs:
         run: rustup component add clippy
       - name: Build Rust project
         run: cargo build
-      - name: Rust Format check
-        run: cargo fmt -- --check
-      - name: Rust Clippy check
-        run: cargo clippy -- -D warnings
       - name: ESLint.js check
         run: |
           cd crates/lib-web

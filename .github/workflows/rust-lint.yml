@@ -1,0 +1,26 @@
+name: Lint Rust
+on:
+  pull_request:
+    paths:
+      - '**/Cargo.lock'
+      - '**/Cargo.toml'
+      - '**/*.rs'
+jobs:
+  build-node:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - name: Update Rust
+        run: rustup update
+      - name: Add Clippy
+        run: rustup component add clippy
+      - name: Build Rust project
+        run: cargo build
+      - name: Rust Format check
+        run: cargo fmt -- --check
+      - name: Rust Clippy check
+        run: cargo clippy -- -D warnings
