@@ -3,6 +3,7 @@ name = "lib-web"
 edition = "2021"
 publish = false
 version.workspace = true
+rust-version.workspace = true
 
 [features]
 list = ["dep:itertools"]
@@ -21,7 +22,7 @@ mime_guess.workspace = true
 flate2.workspace = true
 
 [dev-dependencies]
-lib-web = { path = ".", features = ["list"]}
+lib-web = { path = ".", features = ["list"] }
 
 camino.workspace = true
 mime_guess.workspace = true

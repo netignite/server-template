@@ -3,6 +3,7 @@ name = "lib-web-router"
 edition = "2021"
 publish = false
 version.workspace = true
+rust-version.workspace = true
 
 [dependencies]
 lib-web.workspace = true
