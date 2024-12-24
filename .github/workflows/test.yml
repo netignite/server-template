@@ -1,12 +1,11 @@
 name: Test Project
-
 on: [ pull_request ]
-
 jobs:
   build-node:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
