@@ -110,7 +110,7 @@ fn generate_dist_map(path: &Utf8Path) {
             let mime_type = mime_guess::from_path(local_path.clone()).first_or_octet_stream();
 
             let s = format!(
-                "&Resource {{data_uncompressed: include_bytes!({:?}), data_gzip: include_bytes!({:?}), mime_type: &{:?}}}",
+                "&Resource {{data_uncompressed: include_bytes!({:?}), data_gzip: include_bytes!({:?}), mime_type: {:?}}}",
                 "data/".to_owned() + reduced_path.as_str(), "data-compressed/".to_owned() + reduced_path.as_str(), mime_type
             );
 
