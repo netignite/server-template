@@ -1,0 +1,14 @@
+name: Cargo Machete
+on:
+  pull_request:
+    paths:
+      - '**/Cargo.lock'
+      - '**/Cargo.toml'
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Machete
+        uses: bnjbvr/cargo-machete@main

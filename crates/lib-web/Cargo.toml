@@ -27,3 +27,6 @@ lib-web = { path = ".", features = ["list"] }
 camino.workspace = true
 mime_guess.workspace = true
 flate2.workspace = true
+
+[package.metadata.cargo-machete]
+ignored = ["phf"]
