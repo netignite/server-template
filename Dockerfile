@@ -1,5 +1,5 @@
 # Build Web Data
-FROM node:22.12.0-bookworm AS web-builder
+FROM node:23.5.0-bookworm AS web-builder
 WORKDIR /build
 COPY . .
 RUN cd crates/lib-web && npm install
