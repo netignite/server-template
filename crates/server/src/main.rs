@@ -22,8 +22,10 @@ fn router() -> Router {
 }
 
 #[tokio::main]
-async fn main() {
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // run it with hyper on localhost:3000
-    let listener = TcpListener::bind("0.0.0.0:3000").await.unwrap();
-    axum::serve(listener, router()).await.unwrap();
+    let listener = TcpListener::bind("0.0.0.0:3000").await?;
+    axum::serve(listener, router()).await?;
+
+    Ok(())
 }
