@@ -22,7 +22,7 @@ fn install_npm_dependencies(path: &Utf8Path) {
         .args(["install"])
         .current_dir(root_path)
         .status()
-        .unwrap();
+        .expect("npm command failed to start");
 
     if !npm_exit_status.success() {
         panic!("Failed to install npm dependencies for libraries/web")
@@ -35,7 +35,7 @@ fn build_npm(path: &Utf8Path) {
         .args(["run", "build"])
         .current_dir(path)
         .status()
-        .unwrap();
+        .expect("npm command failed to start");
 
     if !npm_exit_status.success() {
         panic!("Failed to build npm portion of libraries/lib-web")
@@ -53,15 +53,15 @@ fn get_uncompressed_data(path: &Utf8PathBuf) -> Vec<u8> {
 
 fn compress_data(data: &[u8]) -> Vec<u8> {
     let mut encoder = GzEncoder::new(Vec::new(), Compression::best());
-    encoder.write_all(data).unwrap();
-    encoder.finish().unwrap()
+    encoder.write_all(data).expect("Unable to write data.");
+    encoder.finish().expect("Unable to finish compression.")
 }
 
 fn generate_dist_map(path: &Utf8Path) {
     let input_path = path.join("dist");
     let input_path_str = (input_path.as_str().to_owned() + "/").replace('\\', "/");
 
-    let output_directory_string = env::var("OUT_DIR").unwrap();
+    let output_directory_string = env::var("OUT_DIR").expect("Unable to get OUT_DIR.");
     let output_directory = Utf8Path::new(&output_directory_string);
 
     let data_path = output_directory.join("data");
@@ -150,7 +150,7 @@ fn generate_dist_map(path: &Utf8Path) {
             .args(["web_codegen.rs"])
             .current_dir(output_directory)
             .status()
-            .unwrap();
+            .expect("Failed to format web_codegen.rs.");
 
         if !rustfmt_exit_status.success() {
             panic!("Failed to format output of libraries/lib-web")
@@ -168,7 +168,8 @@ fn main() {
     println!("cargo:rerun-if-changed=tsconfig.json");
     println!("cargo:rerun-if-changed=vite.config.ts");
 
-    let current_path_string = env::var("CARGO_MANIFEST_DIR").unwrap();
+    let current_path_string =
+        env::var("CARGO_MANIFEST_DIR").expect("Unable to get current Cargo path.");
     let current_path = Utf8Path::new(&current_path_string);
 
     if env::var("SKIP_NPM_BUILD").unwrap_or_default() != "true" {
