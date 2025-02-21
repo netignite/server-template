@@ -15,6 +15,8 @@ itertools = { workspace = true, optional = true }
 phf = { workspace = true, features = ["macros"] }
 
 [build-dependencies]
+lib-api-data = { workspace = true, features = ["type_generation"] }
+
 camino.workspace = true
 
 phf_codegen.workspace = true

@@ -37,3 +37,4 @@ node_modules
 # misc
 coverage
 *.local
+crates/lib-web/src/response_types.ts

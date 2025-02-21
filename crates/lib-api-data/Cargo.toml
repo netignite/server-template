@@ -1,0 +1,21 @@
+[package]
+name = "lib-api-data"
+edition = "2021"
+publish = false
+version.workspace = true
+rust-version.workspace = true
+
+[features]
+deserialize = ["dep:serde"]
+serialize = ["dep:serde"]
+type_generation = ["dep:ts-rs"]
+
+[dependencies]
+serde = { workspace = true, features = ["derive"], optional = true }
+ts-rs = { workspace = true, optional = true }
+
+[dev-dependencies]
+lib-api-data = { path = ".", features = ['deserialize', 'serialize', 'type_generation'] }
+
+[lints]
+workspace = true
