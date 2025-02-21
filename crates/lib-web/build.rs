@@ -2,6 +2,7 @@ use camino::{Utf8Path, Utf8PathBuf};
 use flate2::Compression;
 use flate2::write::GzEncoder;
 use glob::glob;
+use lib_api_data::export::get_typescript_definitions;
 use phf_codegen::Map;
 use std::fs::File;
 use std::io::{BufWriter, Read, Write};
@@ -14,6 +15,20 @@ static NPM_CMD: &str = "npm.cmd";
 static NPM_CMD: &str = "npm";
 
 static RUSTFMT_CMD: &str = "rustfmt";
+
+fn generate_response_types(path: &Utf8Path) {
+    let file_path = path.join("src").join("response_types.ts");
+    let type_information = get_typescript_definitions();
+
+    fs::write(
+        file_path,
+        std::format!(
+            "/* Generated File -- DO NOT TOUCH */\n/* eslint-disable */\n{}\n",
+            type_information
+        ),
+    )
+    .expect("Unable to write response_types.ts");
+}
 
 fn install_npm_dependencies(path: &Utf8Path) {
     println!("Installing npm dependencies for libraries/web");
@@ -174,6 +189,7 @@ fn main() {
     let current_path = Utf8Path::new(&current_path_string);
 
     if env::var("SKIP_NPM_BUILD").unwrap_or_default() != "true" {
+        generate_response_types(current_path);
         install_npm_dependencies(current_path);
         build_npm(current_path);
     }
