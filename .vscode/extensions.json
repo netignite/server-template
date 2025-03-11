@@ -1,8 +1,12 @@
 {
   "recommendations": [
-    "Vue.volar",
     "Vue.vscode-typescript-vue-plugin",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "ms-azuretools.vscode-docker",
+    "tamasfe.even-better-toml",
+    "rust-lang.rust-analyzer",
+    "vue.volar",
+    "vadimcn.vscode-lldb"
   ]
 }
