@@ -14,6 +14,7 @@ jobs:
             rust:
               - '**/Cargo.lock'
               - '**/Cargo.toml'
+              - '.github/workflows/deny.yml'
       - name: Deny
         if: steps.filter.outputs.rust == 'true'
         uses: EmbarkStudios/cargo-deny-action@v2
