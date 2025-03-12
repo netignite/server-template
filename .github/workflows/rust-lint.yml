@@ -15,6 +15,7 @@ jobs:
               - '**/Cargo.lock'
               - '**/Cargo.toml'
               - '**/*.rs'
+              - '.github/workflows/rust-lint.yml'
       - name: Use Node.js
         if: steps.filter.outputs.rust == 'true'
         uses: actions/setup-node@v4

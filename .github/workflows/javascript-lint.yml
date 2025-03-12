@@ -20,6 +20,7 @@ jobs:
               - '*.scss'
               - '**/package.json'
               - '**/package-lock.json'
+              - '.github/workflows/javascript-lint.yml'
       - name: Use Node.js
         if: steps.filter.outputs.javascript == 'true'
         uses: actions/setup-node@v4

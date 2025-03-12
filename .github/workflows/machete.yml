@@ -14,6 +14,7 @@ jobs:
             rust:
               - '**/Cargo.lock'
               - '**/Cargo.toml'
+              - '.github/workflows/machete.yml'
       - name: Machete
         if: steps.filter.outputs.rust == 'true'
         uses: bnjbvr/cargo-machete@main
