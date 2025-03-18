@@ -1,1 +1,1 @@
-# server-template
+# Net Ignite Server Template
