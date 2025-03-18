@@ -1,0 +1,9 @@
+[template]
+cargo_generate_version = ">=0.20.0"
+ignore = ["CODEOWNERS", "target/", "crates/lib-web/node_modules", "crates/lib-web/dist"]
+exclude = ["*.rs", ".cargo-about/about.hbs", "crates/lib-web/public/favicon.ico", ".DS_Store"]
+
+[hooks]
+pre = [
+    "fix-readme.rhai"
+]
