@@ -16,11 +16,10 @@ static NPM_CMD: &str = "npm";
 static RUSTFMT_CMD: &str = "rustfmt";
 
 fn install_npm_dependencies(path: &Utf8Path) {
-    let root_path = path;
     println!("Installing npm dependencies for libraries/web");
     let npm_exit_status = Command::new(NPM_CMD)
         .args(["install"])
-        .current_dir(root_path)
+        .current_dir(path)
         .status()
         .expect("npm command failed to start");
 
