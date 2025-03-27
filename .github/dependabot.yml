@@ -3,12 +3,12 @@ updates:
   - package-ecosystem: "cargo"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
   - package-ecosystem: "npm"
-    directory: "/crates/lib-web"
+    directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
