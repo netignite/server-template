@@ -2,7 +2,7 @@
 name = "lib-api-router"
 edition.workspace = true
 license.workspace = true
-publish = false
+publish.workspace = true
 version.workspace = true
 rust-version.workspace = true
 
